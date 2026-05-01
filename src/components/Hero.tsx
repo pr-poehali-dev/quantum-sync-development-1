@@ -31,7 +31,7 @@ export default function Hero() {
           СВЕЖИЙ<br />ВОЗДУХ
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-8">
-          Разработка и производство адиабатических вентиляционных машин. Монтаж, пусконаладка и сервисное обслуживание систем вентиляции и кондиционирования.
+          Разработка и производство адиабатических вентиляционных машин для Центров Обработки Данных. Монтаж, пусконаладка и сервисное обслуживание систем вентиляции и кондиционирования.
         </p>
         <button className="border border-white text-white px-8 py-3 uppercase tracking-wide text-sm hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
           Получить консультацию
