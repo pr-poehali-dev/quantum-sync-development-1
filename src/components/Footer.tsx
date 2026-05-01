@@ -245,9 +245,18 @@ export default function Footer() {
             </div>
 
             <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-white/10">
-              <p className="text-neutral-400 text-xs sm:text-sm">
-                © {new Date().getFullYear()} ООО «Энидата Рус». Все права защищены.
-              </p>
+              <div className="flex items-center gap-4">
+                <img
+                  src="https://cdn.poehali.dev/files/29ca2b5c-a09f-4b1e-9d92-1018b158ed15.png"
+                  alt="Anydata"
+                  className="h-16 sm:h-20 w-auto"
+                />
+                <p className="text-neutral-400 text-xs sm:text-sm">
+                  © {new Date().getFullYear()} ООО «Энидата Рус».
+                  <br />
+                  Все права защищены.
+                </p>
+              </div>
               <p className="text-neutral-500 text-xs sm:text-sm">
                 Разработка и производство адиабатических вентмашин для ЦОД
               </p>
