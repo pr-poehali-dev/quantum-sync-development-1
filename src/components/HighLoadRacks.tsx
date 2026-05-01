@@ -92,10 +92,10 @@ export default function HighLoadRacks() {
             Сравнение технологий
           </p>
           <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-12 leading-[0.95] text-white">
-            Жидкостное vs воздушное<br />охлаждение
+            Воздушное vs адиабатическое<br />vs жидкостное охлаждение
           </h3>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             <div className="border border-white/20 bg-white/5 backdrop-blur-sm p-8 lg:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <Icon name="Wind" size={28} className="text-neutral-400" />
@@ -121,6 +121,38 @@ export default function HighLoadRacks() {
                 <li className="flex justify-between items-baseline">
                   <span className="text-sm lg:text-base">Подходит для AI/HPC</span>
                   <span className="text-lg lg:text-xl font-bold text-white">ограниченно</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="border border-white/30 bg-white/10 backdrop-blur-sm p-8 lg:p-10 relative">
+              <div className="absolute top-0 right-0 bg-white text-neutral-900 text-xs uppercase tracking-wider px-3 py-1 font-bold">
+                Энергоэффективно
+              </div>
+              <div className="flex items-center gap-3 mb-6">
+                <Icon name="CloudDrizzle" size={28} className="text-white" />
+                <h4 className="text-xl lg:text-2xl font-bold text-white">Адиабатическое</h4>
+              </div>
+              <ul className="space-y-4 text-neutral-200">
+                <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
+                  <span className="text-sm lg:text-base">Плотность на стойку</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">до 50 кВт</span>
+                </li>
+                <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
+                  <span className="text-sm lg:text-base">PUE (типовой)</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">1,15–1,25</span>
+                </li>
+                <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
+                  <span className="text-sm lg:text-base">Доля энергии на охлаждение</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">~15%</span>
+                </li>
+                <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
+                  <span className="text-sm lg:text-base">Уровень шума</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">55–65 дБ</span>
+                </li>
+                <li className="flex justify-between items-baseline">
+                  <span className="text-sm lg:text-base">Подходит для AI/HPC</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">средние нагрузки</span>
                 </li>
               </ul>
             </div>
