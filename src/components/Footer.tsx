@@ -1,7 +1,36 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const VOLUME_PER_SECOND = 14.7;
+
+const useDailyAirCounter = () => {
+  const [volume, setVolume] = useState<number>(() => {
+    const now = new Date();
+    const startOfDay = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+    );
+    const secondsSinceStart = (now.getTime() - startOfDay.getTime()) / 1000;
+    return secondsSinceStart * VOLUME_PER_SECOND;
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVolume((prev) => prev + VOLUME_PER_SECOND * 0.2);
+    }, 200);
+    return () => clearInterval(interval);
+  }, []);
+
+  return volume;
+};
+
 export default function Footer() {
+  const dailyAir = useDailyAirCounter();
+  const formatted = new Intl.NumberFormat("ru-RU", {
+    maximumFractionDigits: 0,
+  }).format(Math.round(dailyAir));
   const inflowLines = Array.from({ length: 6 }, (_, i) => ({
     id: i,
     offset: (i - 2.5) * 18,
@@ -160,6 +189,41 @@ export default function Footer() {
                     <Icon name="ArrowRight" size={20} className="text-cyan-300" />
                   </motion.div>
                 </div>
+              </div>
+
+              <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4 border border-cyan-300/30 bg-black/40 backdrop-blur-sm px-4 sm:px-6 py-3 sm:py-4">
+                <div className="relative">
+                  <Icon name="Wind" size={20} className="text-cyan-300" />
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-cyan-300/30 blur-md"
+                    animate={{ opacity: [0.3, 0.8, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-neutral-400">
+                    Обработано воздуха за сегодня
+                  </span>
+                  <div className="flex items-baseline gap-1.5">
+                    <motion.span
+                      key={Math.floor(dailyAir / 10)}
+                      initial={{ opacity: 0.7, y: -2 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-lg sm:text-xl lg:text-2xl font-bold text-white tabular-nums tracking-tight"
+                    >
+                      {formatted}
+                    </motion.span>
+                    <span className="text-xs sm:text-sm text-cyan-300 uppercase tracking-wider">
+                      м³
+                    </span>
+                  </div>
+                </div>
+                <motion.div
+                  className="ml-auto w-2 h-2 rounded-full bg-cyan-300"
+                  animate={{ opacity: [0.4, 1, 0.4], scale: [0.9, 1.1, 0.9] }}
+                  transition={{ duration: 1.4, repeat: Infinity }}
+                />
               </div>
             </div>
 
