@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import Icon from "@/components/ui/icon";
+import QuoteFormDialog from "@/components/QuoteFormDialog";
 
 const HOURS_PER_YEAR = 8760;
 
@@ -23,6 +24,7 @@ const formatNumber = (value: number) => {
 export default function SavingsCalculator() {
   const [itLoadKw, setItLoadKw] = useState<number>(500);
   const [tariff, setTariff] = useState<number>(7.5);
+  const [quoteOpen, setQuoteOpen] = useState<boolean>(false);
 
   const result = useMemo(() => {
     const air = {
@@ -378,11 +380,28 @@ export default function SavingsCalculator() {
           <p className="text-xs lg:text-sm text-neutral-500 max-w-2xl">
             Расчёт ориентировочный, основан на типовых значениях PUE: воздушное — 1,60, адиабатическое — 1,20, прямое жидкостное — 1,10. Точная экономия зависит от конфигурации, климата и режима эксплуатации.
           </p>
-          <button className="bg-white text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-cyan-300 transition-all duration-300 cursor-pointer shrink-0">
+          <button
+            onClick={() => setQuoteOpen(true)}
+            className="bg-white text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-cyan-300 transition-all duration-300 cursor-pointer shrink-0"
+          >
             Получить точный расчёт
           </button>
         </motion.div>
       </div>
+
+      <QuoteFormDialog
+        open={quoteOpen}
+        onOpenChange={setQuoteOpen}
+        itLoad={itLoadKw}
+        tariff={tariff}
+        calc={{
+          airCost: result.airCost,
+          adiabaticCost: result.adiabaticCost,
+          liquidCost: result.liquidCost,
+          savings: result.savings,
+          savingsPct: result.savingsPct,
+        }}
+      />
     </section>
   );
 }
