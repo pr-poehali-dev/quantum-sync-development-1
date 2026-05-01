@@ -12,30 +12,41 @@ export default function Hero() {
   return (
     <div
       ref={container}
-      className="relative flex items-center justify-center h-screen overflow-hidden"
+      className="relative h-screen overflow-hidden bg-white"
     >
       <motion.div
         style={{ y }}
         className="absolute inset-0 w-full h-full"
       >
         <img
-          src="https://cdn.poehali.dev/projects/a07e6936-e218-4a96-97a5-3d32d3ac4253/files/7df94ee8-eda6-4edc-9b1a-f02e8f213fa3.jpg"
+          src="https://cdn.poehali.dev/projects/a07e6936-e218-4a96-97a5-3d32d3ac4253/files/d5175968-9ead-40e9-98c8-d9b61c2b49d2.jpg"
           alt="Центр обработки данных"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
       </motion.div>
 
-      <div className="relative z-10 text-center text-white px-6">
-        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 leading-tight">
-          ХОЛОДНЫЙ<br />РАСЧЁТ
-        </h1>
-        <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-90 mb-8">
-          Разработка и производство адиабатических вентиляционных машин для Центров Обработки Данных. Монтаж, пусконаладка и сервисное обслуживание систем вентиляции и кондиционирования.
-        </p>
-        <button className="border border-white text-white px-8 py-3 uppercase tracking-wide text-sm hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
-          Получить консультацию
-        </button>
+      <div className="relative z-10 h-full flex flex-col justify-end px-6 sm:px-12 lg:px-20 pb-16 lg:pb-24">
+        <div className="max-w-3xl">
+          <p className="uppercase tracking-[0.3em] text-xs sm:text-sm text-neutral-600 mb-6">
+            Энидата Рус
+          </p>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9] text-neutral-900">
+            Холодный<br />расчёт
+          </h1>
+          <div className="w-24 h-px bg-neutral-900 mb-8" />
+          <p className="text-base sm:text-lg lg:text-xl max-w-xl text-neutral-700 mb-10 leading-relaxed">
+            Разработка и производство адиабатических вентиляционных машин для Центров Обработки Данных. Монтаж, пусконаладка и сервисное обслуживание.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="bg-neutral-900 text-white px-8 py-4 uppercase tracking-wide text-sm hover:bg-neutral-700 transition-all duration-300 cursor-pointer">
+              Получить консультацию
+            </button>
+            <button className="border border-neutral-900 text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-neutral-900 hover:text-white transition-all duration-300 cursor-pointer">
+              Наши решения
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
