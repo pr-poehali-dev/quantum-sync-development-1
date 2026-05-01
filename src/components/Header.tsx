@@ -5,7 +5,7 @@ interface HeaderProps {
 export default function Header({ className }: HeaderProps) {
   return (
     <header className={`absolute top-0 left-0 right-0 z-10 p-6 ${className ?? ""}`}>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center items-center">
         <img
           src="https://cdn.poehali.dev/files/47357781-a429-4fe6-ae1b-e0c492a44649.png"
           alt="Anydata Rus"
