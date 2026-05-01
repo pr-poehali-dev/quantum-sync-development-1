@@ -9,7 +9,6 @@ export default function Featured() {
         />
       </div>
       <div className="flex-1 text-left lg:h-[800px] flex flex-col justify-center lg:mr-12 lg:order-1">
-        <h3 className="uppercase mb-4 text-sm tracking-wide text-neutral-600">Собственное производство</h3>
         <p className="text-2xl lg:text-4xl mb-8 text-neutral-900 leading-tight">
           Проектируем и изготавливаем адиабатические вентиляционные машины под ваши задачи. Полный цикл — от расчёта до монтажа и сервисного обслуживания.
         </p>
