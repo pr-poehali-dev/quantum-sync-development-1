@@ -31,7 +31,8 @@ export default function Hero() {
   return (
     <div
       ref={container}
-      className="relative h-screen overflow-hidden bg-black"
+      className="relative h-screen overflow-hidden"
+      style={{ backgroundColor: "#0a1626" }}
     >
       <motion.div
         style={{ y }}
@@ -43,9 +44,10 @@ export default function Hero() {
         <img
           src="https://cdn.poehali.dev/projects/a07e6936-e218-4a96-97a5-3d32d3ac4253/files/d5175968-9ead-40e9-98c8-d9b61c2b49d2.jpg"
           alt="Центр обработки данных"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1626]/80 via-[#0a1626]/70 to-[#050b14]/95" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,22,38,0)_0%,rgba(5,11,20,0.85)_100%)]" />
       </motion.div>
 
       <motion.div
