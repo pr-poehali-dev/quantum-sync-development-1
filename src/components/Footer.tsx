@@ -2,12 +2,17 @@ import { motion } from "framer-motion";
 import Icon from "@/components/ui/icon";
 
 export default function Footer() {
-  const particles = Array.from({ length: 8 }, (_, i) => ({
+  const inflowLines = Array.from({ length: 6 }, (_, i) => ({
     id: i,
-    x: Math.cos((i * Math.PI * 2) / 8) * 80,
-    y: Math.sin((i * Math.PI * 2) / 8) * 80,
-    delay: i * 0.2,
+    offset: (i - 2.5) * 18,
+    delay: i * 0.18,
   }));
+  const outflowLines = Array.from({ length: 6 }, (_, i) => ({
+    id: i,
+    offset: (i - 2.5) * 18,
+    delay: i * 0.18 + 0.4,
+  }));
+  const fanBlades = [0, 60, 120, 180, 240, 300];
 
   return (
     <div
@@ -28,63 +33,133 @@ export default function Footer() {
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
               aria-hidden="true"
             >
-              <div className="relative w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] lg:w-[420px] lg:h-[420px] flex items-center justify-center">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={`ring-${i}`}
-                    className="absolute inset-0 rounded-full border border-cyan-300/40"
-                    initial={{ scale: 0.4, opacity: 0 }}
-                    animate={{ scale: 1.6, opacity: [0, 0.6, 0] }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      delay: i * 1.3,
-                      ease: "easeOut",
-                    }}
-                  />
-                ))}
-
-                <motion.div
-                  className="absolute w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full bg-cyan-500/20 blur-2xl"
-                  animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.9, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {particles.map((p) => (
-                  <motion.div
-                    key={`p-${p.id}`}
-                    className="absolute w-1.5 h-1.5 rounded-full bg-cyan-300"
-                    initial={{ x: 0, y: 0, opacity: 0 }}
-                    animate={{
-                      x: [0, p.x, 0],
-                      y: [0, p.y, 0],
-                      opacity: [0, 1, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      delay: p.delay,
-                      ease: "easeInOut",
-                    }}
-                  />
-                ))}
-
-                <motion.div
-                  className="relative z-10 w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-cyan-300/30 to-cyan-500/10 backdrop-blur-sm border border-cyan-300/40 flex items-center justify-center"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-                >
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-                  >
-                    <Icon
-                      name="Snowflake"
-                      size={40}
-                      className="text-cyan-300 drop-shadow-[0_0_12px_rgba(103,232,249,0.8)]"
+              <div className="relative w-[420px] h-[220px] sm:w-[560px] sm:h-[280px] lg:w-[680px] lg:h-[340px] flex items-center justify-center">
+                <div className="absolute left-0 top-0 bottom-0 w-1/3 flex flex-col justify-center gap-2">
+                  {inflowLines.map((line) => (
+                    <motion.div
+                      key={`in-${line.id}`}
+                      className="h-0.5 rounded-full bg-gradient-to-r from-transparent via-orange-400/70 to-orange-300"
+                      style={{ marginLeft: `${Math.abs(line.offset)}px` }}
+                      animate={{
+                        width: ["0%", "100%", "100%"],
+                        x: ["-20%", "0%", "30%"],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        delay: line.delay,
+                        ease: "easeInOut",
+                      }}
                     />
+                  ))}
+                  <p className="absolute -top-2 left-2 text-[10px] sm:text-xs uppercase tracking-widest text-orange-300/80">
+                    Тёплый воздух
+                  </p>
+                </div>
+
+                <div className="absolute right-0 top-0 bottom-0 w-1/3 flex flex-col justify-center gap-2 items-end">
+                  {outflowLines.map((line) => (
+                    <motion.div
+                      key={`out-${line.id}`}
+                      className="h-0.5 rounded-full bg-gradient-to-r from-cyan-300 via-cyan-300/70 to-transparent"
+                      style={{ marginRight: `${Math.abs(line.offset)}px` }}
+                      animate={{
+                        width: ["0%", "100%", "100%"],
+                        x: ["-30%", "0%", "20%"],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 2.4,
+                        repeat: Infinity,
+                        delay: line.delay,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  ))}
+                  <p className="absolute -top-2 right-2 text-[10px] sm:text-xs uppercase tracking-widest text-cyan-300/80">
+                    Охлаждённый воздух
+                  </p>
+                </div>
+
+                <motion.div
+                  className="relative z-10 w-[160px] h-[180px] sm:w-[200px] sm:h-[220px] lg:w-[240px] lg:h-[260px] border border-white/30 bg-neutral-900/60 backdrop-blur-sm flex items-center justify-center"
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 rgba(103,232,249,0)",
+                      "0 0 30px rgba(103,232,249,0.35)",
+                      "0 0 0 rgba(103,232,249,0)",
+                    ],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="absolute top-2 left-2 right-2 flex justify-between items-center">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-widest text-neutral-400">
+                      AnyData · ВМ-110
+                    </span>
+                    <motion.span
+                      className="w-1.5 h-1.5 rounded-full bg-cyan-300"
+                      animate={{ opacity: [0.3, 1, 0.3] }}
+                      transition={{ duration: 1.6, repeat: Infinity }}
+                    />
+                  </div>
+
+                  <div className="absolute bottom-2 left-2 right-2 flex justify-between text-[9px] uppercase tracking-widest text-neutral-500">
+                    <span>+32°C</span>
+                    <span className="text-cyan-300">+18°C</span>
+                  </div>
+
+                  <motion.div
+                    className="relative w-[110px] h-[110px] sm:w-[140px] sm:h-[140px] lg:w-[170px] lg:h-[170px] rounded-full border-2 border-cyan-300/40 bg-gradient-to-br from-cyan-300/10 to-transparent flex items-center justify-center"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }}
+                  >
+                    {fanBlades.map((angle) => (
+                      <div
+                        key={angle}
+                        className="absolute left-1/2 top-1/2 origin-bottom"
+                        style={{
+                          transform: `translate(-50%, -100%) rotate(${angle}deg)`,
+                          height: "45%",
+                        }}
+                      >
+                        <div className="w-3 sm:w-4 lg:w-5 h-full bg-gradient-to-t from-cyan-300/80 to-cyan-300/10 rounded-full blur-[1px]" />
+                      </div>
+                    ))}
+                    <div className="absolute w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]">
+                      <div className="absolute inset-1 rounded-full bg-neutral-900" />
+                    </div>
                   </motion.div>
+
+                  <motion.div
+                    className="absolute inset-0 rounded-sm"
+                    animate={{
+                      background: [
+                        "radial-gradient(circle at center, rgba(103,232,249,0.0) 0%, transparent 60%)",
+                        "radial-gradient(circle at center, rgba(103,232,249,0.18) 0%, transparent 60%)",
+                        "radial-gradient(circle at center, rgba(103,232,249,0.0) 0%, transparent 60%)",
+                      ],
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
                 </motion.div>
+
+                <div className="absolute left-[33%] top-1/2 -translate-y-1/2 -translate-x-full">
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Icon name="ArrowRight" size={20} className="text-orange-300/80" />
+                  </motion.div>
+                </div>
+                <div className="absolute right-[33%] top-1/2 -translate-y-1/2 translate-x-full">
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Icon name="ArrowRight" size={20} className="text-cyan-300" />
+                  </motion.div>
+                </div>
               </div>
             </div>
 
