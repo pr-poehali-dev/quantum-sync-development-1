@@ -134,8 +134,8 @@ export default function Footer() {
                   </div>
 
                   <div className="absolute bottom-2 left-2 right-2 flex justify-between text-[9px] uppercase tracking-widest text-neutral-500">
-                    <span>+32°C</span>
-                    <span className="text-cyan-300">+18°C</span>
+                    <span className="text-orange-300">+47°C</span>
+                    <span className="text-cyan-300">+32°C</span>
                   </div>
 
                   <motion.div
