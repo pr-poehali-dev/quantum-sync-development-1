@@ -63,7 +63,7 @@ export default function Hero() {
           </motion.p>
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9] text-neutral-900"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8 leading-[0.9] text-neutral-900"
           >
             Холодный<br />расчёт
           </motion.h1>
