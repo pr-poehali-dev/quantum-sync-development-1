@@ -7,7 +7,7 @@ export default function Header({ className }: HeaderProps) {
     <header className={`absolute top-0 left-0 right-0 z-10 p-6 ${className ?? ""}`}>
       <div className="flex justify-between items-center">
         <img
-          src="https://cdn.poehali.dev/files/e4d0b460-c997-4d81-aa73-55ea05cb68e0.png"
+          src="https://cdn.poehali.dev/files/47357781-a429-4fe6-ae1b-e0c492a44649.png"
           alt="Anydata Rus"
           className="h-20 w-auto mix-blend-screen"
         />
