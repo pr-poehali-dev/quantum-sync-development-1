@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <div
       ref={container}
-      className="relative h-screen overflow-hidden bg-white"
+      className="relative h-screen overflow-hidden bg-black"
     >
       <motion.div
         style={{ y }}
@@ -45,7 +45,7 @@ export default function Hero() {
           alt="Центр обработки данных"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
       </motion.div>
 
       <motion.div
@@ -57,23 +57,23 @@ export default function Hero() {
         <div className="max-w-3xl">
           <motion.p
             variants={itemVariants}
-            className="uppercase tracking-[0.3em] text-xs sm:text-sm text-neutral-600 mb-6"
+            className="uppercase tracking-[0.3em] text-xs sm:text-sm text-cyan-300 mb-6"
           >
             Энидата Рус
           </motion.p>
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8 leading-[0.9] text-neutral-900"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-[0.95] text-white"
           >
             Холодный<br />расчёт
           </motion.h1>
           <motion.div
             variants={itemVariants}
-            className="w-24 h-px bg-neutral-900 mb-8"
+            className="w-24 h-px bg-cyan-300 mb-8"
           />
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg lg:text-xl max-w-xl text-neutral-700 mb-10 leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl max-w-xl text-neutral-200 mb-10 leading-relaxed"
           >
             Разработка и производство адиабатических вентиляционных машин для Центров Обработки Данных. Монтаж, пусконаладка, сервисное и техническое обслуживание систем вентиляции и кондиционирования.
           </motion.p>
@@ -81,10 +81,10 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <button className="bg-neutral-900 text-white px-8 py-4 uppercase tracking-wide text-sm hover:bg-neutral-700 transition-all duration-300 cursor-pointer">
+            <button className="bg-cyan-300 text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-white transition-all duration-300 cursor-pointer font-semibold">
               Получить консультацию
             </button>
-            <button className="border border-neutral-900 text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-neutral-900 hover:text-white transition-all duration-300 cursor-pointer">
+            <button className="border border-white/60 text-white px-8 py-4 uppercase tracking-wide text-sm hover:bg-white hover:text-neutral-900 transition-all duration-300 cursor-pointer">
               Наши решения
             </button>
           </motion.div>
