@@ -10,7 +10,7 @@ export default function Header({ className }: HeaderProps) {
           Услуги
         </a>
         <img
-          src="https://cdn.poehali.dev/files/38ab23f8-9a43-44df-aca4-62384c6f6550.png"
+          src="https://cdn.poehali.dev/files/29ca2b5c-a09f-4b1e-9d92-1018b158ed15.png"
           alt="Anydata"
           className="h-28 w-auto"
         />
