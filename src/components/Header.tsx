@@ -9,7 +9,7 @@ export default function Header({ className }: HeaderProps) {
         <img
           src="https://cdn.poehali.dev/files/e4d0b460-c997-4d81-aa73-55ea05cb68e0.png"
           alt="Anydata Rus"
-          className="h-12 w-auto"
+          className="h-20 w-auto mix-blend-screen"
         />
         <nav className="flex gap-8">
           <a
