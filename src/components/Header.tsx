@@ -6,7 +6,11 @@ export default function Header({ className }: HeaderProps) {
   return (
     <header className={`absolute top-0 left-0 right-0 z-10 p-6 ${className ?? ""}`}>
       <div className="flex justify-between items-center">
-        <div className="text-white text-sm uppercase tracking-wide font-bold">Энидата Рус</div>
+        <img
+          src="https://cdn.poehali.dev/files/e4d0b460-c997-4d81-aa73-55ea05cb68e0.png"
+          alt="Anydata Rus"
+          className="h-12 w-auto"
+        />
         <nav className="flex gap-8">
           <a
             href="#services"
