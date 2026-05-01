@@ -104,7 +104,7 @@ export default function HighLoadRacks() {
               <ul className="space-y-4 text-neutral-300">
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">Плотность на стойку</span>
-                  <span className="text-lg lg:text-xl font-bold text-white">до 30 кВт</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">до 25 кВт</span>
                 </li>
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">PUE (типовой)</span>
@@ -136,7 +136,7 @@ export default function HighLoadRacks() {
               <ul className="space-y-4 text-neutral-200">
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">Плотность на стойку</span>
-                  <span className="text-lg lg:text-xl font-bold text-white">до 50 кВт</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">до 25 кВт</span>
                 </li>
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">PUE (типовой)</span>
