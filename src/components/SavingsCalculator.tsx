@@ -224,6 +224,12 @@ export default function SavingsCalculator() {
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Плотность на стойку
+                  </p>
+                  <p className="text-xl font-bold text-white">до 25 кВт</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
                     Потребление за год
                   </p>
                   <p className="text-xl font-bold text-white">
@@ -263,6 +269,12 @@ export default function SavingsCalculator() {
                   <p className="text-2xl font-bold text-white">
                     {result.adiabaticPue.toFixed(2)}
                   </p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Плотность на стойку
+                  </p>
+                  <p className="text-xl font-bold text-white">до 25 кВт</p>
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
@@ -314,6 +326,12 @@ export default function SavingsCalculator() {
                   <p className="text-2xl font-bold text-cyan-300">
                     {result.liquidPue.toFixed(2)}
                   </p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Плотность на стойку
+                  </p>
+                  <p className="text-xl font-bold text-cyan-300">до 110 кВт</p>
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
