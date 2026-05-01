@@ -27,26 +27,21 @@ export default function SavingsCalculator() {
   const [quoteOpen, setQuoteOpen] = useState<boolean>(false);
 
   const result = useMemo(() => {
-    const air = {
-      pue: 1.6,
-      coolingShare: 0.375,
-    };
-    const adiabatic = {
-      pue: 1.2,
-      coolingShare: 0.167,
-    };
-    const liquid = {
-      pue: 1.1,
-      coolingShare: 0.091,
-    };
+    const air = { pue: 1.6 };
+    const adiabatic = { pue: 1.2 };
+    const liquid = { pue: 1.1 };
 
     const airTotalKw = itLoadKw * air.pue;
     const adiabaticTotalKw = itLoadKw * adiabatic.pue;
     const liquidTotalKw = itLoadKw * liquid.pue;
 
-    const airCoolingKwh = airTotalKw * air.coolingShare * HOURS_PER_YEAR;
-    const adiabaticCoolingKwh = adiabaticTotalKw * adiabatic.coolingShare * HOURS_PER_YEAR;
-    const liquidCoolingKwh = liquidTotalKw * liquid.coolingShare * HOURS_PER_YEAR;
+    const airCoolingKw = itLoadKw * (air.pue - 1);
+    const adiabaticCoolingKw = itLoadKw * (adiabatic.pue - 1);
+    const liquidCoolingKw = itLoadKw * (liquid.pue - 1);
+
+    const airCoolingKwh = airCoolingKw * HOURS_PER_YEAR;
+    const adiabaticCoolingKwh = adiabaticCoolingKw * HOURS_PER_YEAR;
+    const liquidCoolingKwh = liquidCoolingKw * HOURS_PER_YEAR;
 
     const airTotalKwh = airTotalKw * HOURS_PER_YEAR;
     const adiabaticTotalKwh = adiabaticTotalKw * HOURS_PER_YEAR;

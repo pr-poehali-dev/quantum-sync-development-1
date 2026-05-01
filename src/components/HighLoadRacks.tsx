@@ -19,8 +19,8 @@ const features = [
   },
   {
     icon: "Leaf",
-    title: "Экономия до 40%",
-    description: "Снижение энергопотребления на охлаждение по сравнению с традиционным воздушным контуром",
+    title: "Экономия до 30%",
+    description: "Снижение общего энергопотребления ЦОД по сравнению с традиционным воздушным охлаждением",
   },
 ];
 
@@ -144,7 +144,7 @@ export default function HighLoadRacks() {
                 </li>
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">Доля энергии на охлаждение</span>
-                  <span className="text-lg lg:text-xl font-bold text-white">~15%</span>
+                  <span className="text-lg lg:text-xl font-bold text-white">~17%</span>
                 </li>
                 <li className="flex justify-between items-baseline border-b border-white/10 pb-3">
                   <span className="text-sm lg:text-base">Уровень шума</span>
