@@ -51,6 +51,81 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-[1]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.8, delay: 0.4, ease: "easeOut" }}
+      >
+        <motion.div
+          className="absolute left-0 top-1/4 h-1/2 w-px"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, #22d3ee, transparent)",
+            boxShadow: "0 0 24px 2px rgba(34, 211, 238, 0.6)",
+          }}
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div
+          className="absolute left-0 top-0 h-full w-40"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(34, 211, 238, 0.18), transparent)",
+          }}
+        />
+
+        <motion.div
+          className="absolute right-0 top-1/4 h-1/2 w-px"
+          style={{
+            background:
+              "linear-gradient(to bottom, transparent, #fb923c, transparent)",
+            boxShadow: "0 0 24px 2px rgba(251, 146, 60, 0.6)",
+          }}
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
+        />
+        <div
+          className="absolute right-0 top-0 h-full w-40"
+          style={{
+            background:
+              "linear-gradient(to left, rgba(251, 146, 60, 0.18), transparent)",
+          }}
+        />
+
+        <motion.div
+          className="absolute left-1/4 top-0 h-px w-1/4"
+          style={{
+            background:
+              "linear-gradient(to right, transparent, rgba(34, 211, 238, 0.7), transparent)",
+            boxShadow: "0 0 16px 1px rgba(34, 211, 238, 0.4)",
+          }}
+          animate={{ opacity: [0.3, 0.9, 0.3] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute right-1/4 bottom-0 h-px w-1/4"
+          style={{
+            background:
+              "linear-gradient(to right, transparent, rgba(251, 146, 60, 0.7), transparent)",
+            boxShadow: "0 0 16px 1px rgba(251, 146, 60, 0.4)",
+          }}
+          animate={{ opacity: [0.3, 0.9, 0.3] }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+      </motion.div>
+
+      <motion.div
         className="relative z-10 h-full flex flex-col justify-end px-6 sm:px-12 lg:px-20 pb-16 lg:pb-24"
         variants={containerVariants}
         initial="hidden"
