@@ -29,41 +29,60 @@ export default function SavingsCalculator() {
       pue: 1.6,
       coolingShare: 0.375,
     };
+    const adiabatic = {
+      pue: 1.2,
+      coolingShare: 0.167,
+    };
     const liquid = {
       pue: 1.1,
       coolingShare: 0.091,
     };
 
     const airTotalKw = itLoadKw * air.pue;
+    const adiabaticTotalKw = itLoadKw * adiabatic.pue;
     const liquidTotalKw = itLoadKw * liquid.pue;
 
     const airCoolingKwh = airTotalKw * air.coolingShare * HOURS_PER_YEAR;
+    const adiabaticCoolingKwh = adiabaticTotalKw * adiabatic.coolingShare * HOURS_PER_YEAR;
     const liquidCoolingKwh = liquidTotalKw * liquid.coolingShare * HOURS_PER_YEAR;
 
     const airTotalKwh = airTotalKw * HOURS_PER_YEAR;
+    const adiabaticTotalKwh = adiabaticTotalKw * HOURS_PER_YEAR;
     const liquidTotalKwh = liquidTotalKw * HOURS_PER_YEAR;
 
     const airCost = airTotalKwh * tariff;
+    const adiabaticCost = adiabaticTotalKwh * tariff;
     const liquidCost = liquidTotalKwh * tariff;
+
+    const adiabaticSavings = airCost - adiabaticCost;
+    const adiabaticSavingsPct = airCost > 0 ? (adiabaticSavings / airCost) * 100 : 0;
 
     const savings = airCost - liquidCost;
     const savingsPct = airCost > 0 ? (savings / airCost) * 100 : 0;
 
     const airCoolingCost = airCoolingKwh * tariff;
+    const adiabaticCoolingCost = adiabaticCoolingKwh * tariff;
     const liquidCoolingCost = liquidCoolingKwh * tariff;
 
     return {
       airTotalKwh,
+      adiabaticTotalKwh,
       liquidTotalKwh,
       airCoolingKwh,
+      adiabaticCoolingKwh,
       liquidCoolingKwh,
       airCost,
+      adiabaticCost,
       liquidCost,
       airCoolingCost,
+      adiabaticCoolingCost,
       liquidCoolingCost,
+      adiabaticSavings,
+      adiabaticSavingsPct,
       savings,
       savingsPct,
       airPue: air.pue,
+      adiabaticPue: adiabatic.pue,
       liquidPue: liquid.pue,
     };
   }, [itLoadKw, tariff]);
@@ -189,7 +208,7 @@ export default function SavingsCalculator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6"
           >
             <div className="border border-white/20 bg-white/5 backdrop-blur-sm p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -223,6 +242,57 @@ export default function SavingsCalculator() {
                   </p>
                   <p className="text-2xl lg:text-3xl font-bold text-white">
                     {formatRub(result.airCost)}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-white/30 bg-white/10 backdrop-blur-sm p-6 lg:p-8 relative">
+              <div className="absolute top-0 right-0 bg-white text-neutral-900 text-xs uppercase tracking-wider px-3 py-1 font-bold">
+                Энергоэффективно
+              </div>
+              <div className="flex items-center gap-3 mb-6">
+                <Icon name="CloudDrizzle" size={24} className="text-white" />
+                <h4 className="text-lg font-bold text-white">Адиабатическое</h4>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">PUE</p>
+                  <p className="text-2xl font-bold text-white">
+                    {result.adiabaticPue.toFixed(2)}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Потребление за год
+                  </p>
+                  <p className="text-xl font-bold text-white">
+                    {formatNumber(result.adiabaticTotalKwh / 1000)} МВт·ч
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Затраты на охлаждение
+                  </p>
+                  <p className="text-xl font-bold text-white">
+                    {formatRub(result.adiabaticCoolingCost)}
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/10">
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Итого за год
+                  </p>
+                  <p className="text-2xl lg:text-3xl font-bold text-white">
+                    {formatRub(result.adiabaticCost)}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/10">
+                  <p className="text-xs uppercase tracking-wider text-neutral-500 mb-1">
+                    Экономия vs воздух
+                  </p>
+                  <p className="text-base font-bold text-white">
+                    {formatRub(result.adiabaticSavings)} · −
+                    {result.adiabaticSavingsPct.toFixed(1)}%
                   </p>
                 </div>
               </div>
@@ -270,13 +340,16 @@ export default function SavingsCalculator() {
               </div>
             </div>
 
-            <div className="sm:col-span-2 border border-cyan-300 bg-gradient-to-br from-cyan-500/20 to-cyan-300/5 backdrop-blur-sm p-6 lg:p-8">
+            <div className="sm:col-span-3 border border-cyan-300 bg-gradient-to-br from-cyan-500/20 to-cyan-300/5 backdrop-blur-sm p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-4">
                 <Icon name="TrendingDown" size={28} className="text-cyan-300" />
                 <h4 className="text-lg lg:text-xl font-bold text-white uppercase tracking-wider">
-                  Ваша экономия за год
+                  Максимальная экономия за год
                 </h4>
               </div>
+              <p className="text-xs text-neutral-400 mb-6 uppercase tracking-wider">
+                Жидкостное против воздушного
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-end">
                 <div>
                   <p className="text-4xl lg:text-5xl font-bold text-cyan-300 leading-none mb-2">
@@ -303,7 +376,7 @@ export default function SavingsCalculator() {
           className="mt-12 lg:mt-16 flex flex-col sm:flex-row gap-4 sm:items-center justify-between"
         >
           <p className="text-xs lg:text-sm text-neutral-500 max-w-2xl">
-            Расчёт ориентировочный, основан на типовых значениях PUE для воздушного (1,60) и прямого жидкостного (1,10) охлаждения. Точная экономия зависит от конфигурации, климата и режима эксплуатации.
+            Расчёт ориентировочный, основан на типовых значениях PUE: воздушное — 1,60, адиабатическое — 1,20, прямое жидкостное — 1,10. Точная экономия зависит от конфигурации, климата и режима эксплуатации.
           </p>
           <button className="bg-white text-neutral-900 px-8 py-4 uppercase tracking-wide text-sm hover:bg-cyan-300 transition-all duration-300 cursor-pointer shrink-0">
             Получить точный расчёт
